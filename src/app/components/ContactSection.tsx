@@ -9,6 +9,7 @@ export default function ContactSection() {
     phone: '',
     message: ''
   });
+  const brandLetters = 'REFORMA'.split('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,7 +18,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contacto" className="bg-white py-20">
+    <section id="contacto" className="bg-white pt-20 pb-0">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -167,15 +168,44 @@ export default function ContactSection() {
             </div>
           </div>
 
-          <div className="pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-gray-400">
-              Reforma Interiores SAS © 2026 - Todos los derechos reservados
-            </p>
-            <div className="flex items-center gap-6">
-              <a href="#" className="hover:text-orange-400 transition-colors">Política de Privacidad</a>
-              <a href="#" className="hover:text-orange-400 transition-colors">Términos de Servicio</a>
-            </div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="pt-10 border-t border-gray-700 text-center"
+          >
+            <p className="sr-only">REFORMA</p>
+            <motion.div
+              initial="rest"
+              whileHover="hover"
+              aria-hidden="true"
+              className="inline-flex items-center justify-center text-3xl md:text-5xl font-bold text-white tracking-[0.14em] cursor-default"
+            >
+              {brandLetters.map((letter, index) => (
+                <motion.span
+                  key={`${letter}-${index}`}
+                  custom={index}
+                  variants={{
+                    rest: { y: 0, opacity: 0.96 },
+                    hover: (i: number) => ({
+                      y: [0, -6, 0],
+                      opacity: [0.9, 1, 0.9],
+                      transition: {
+                        duration: 1.4,
+                        ease: 'easeInOut',
+                        repeat: Infinity,
+                        delay: i * 0.06
+                      }
+                    })
+                  }}
+                  className="inline-block"
+                >
+                  {letter}
+                </motion.span>
+              ))}
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

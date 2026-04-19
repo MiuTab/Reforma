@@ -161,9 +161,6 @@ export default function ForOwnersSection() {
                 <div className="text-6xl font-bold text-orange-500/20 mb-4">{step.number}</div>
                 <h4 className="text-xl mb-3">{step.title}</h4>
                 <p className="text-gray-600">{step.description}</p>
-                {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-orange-500/30 -translate-x-1/2"></div>
-                )}
               </motion.div>
             ))}
           </div>
